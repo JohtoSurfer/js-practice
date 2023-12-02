@@ -1,19 +1,26 @@
-/*general*/
+/* General */
 * {
     margin: 0;
     padding: 0;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-/*cotainer*/
-
+/* Container */
 .container {
-    margin: 15vh;
+    margin: auto; /* Center the container horizontally */
+    margin-top: 15vh;
     padding: 40px;
     border: 3px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center; /* Center the content vertically */
+    background-image: url('path/to/your/image.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+    background-size: cover; /* Cover the entire container with the background image */
+    background-position: center; /* Center the background image */
 }
 
-/*button*/
+/* Button */
+#btn {
+    margin-top: 10px; /* Add some space between the input and the button */
+}
