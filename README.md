@@ -1,6 +1,6 @@
-# Luis Barrios JavaScript Basic Email Validator practice
-
-A simple JavaScript project for validating email addresses using regular expressions.
+# Luis Barrios JavaScript Basic projects for practicing concepts.
+1 . simple JavaScript project for validating email addresses using regular expressions.
+2 . classic snake game.
 ## Technologies Used
 - JavaScript
 - Regular Expressions
