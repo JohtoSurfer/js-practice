@@ -25,7 +25,7 @@ const movementDirection = {
 let snake;
 let score;
 let direction;
-let boardInfo;
+let boardInfo; // empty square
 let emptySpace;
 let movementInterval;
 
@@ -34,7 +34,9 @@ const setGame = () => {
     snake = ['00', '01', '02','03'];
     score = snake.length;
     direction = 'right'
-    boardInfo = Array.from(Array(boardSize), () => new Array(boardSize).fill.squareType.empty) 
+    boardInfo = Array.from(Array(boardSize), () => new Array(boardSize).fill(squareType.empty));
+    //  boardSquares = Array.from(Array(boardSize), () => new Array(boardSize).fill(squareTypes.emptySquare));
+    console.log(boardInfo) 
 }
 const startGame = () => {
     setGame();
