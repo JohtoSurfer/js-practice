@@ -25,18 +25,33 @@ const movementDirection = {
 let snake;
 let score;
 let direction;
-let boardInfo; // empty square
-let emptySpace;
+let boardInfo; // boardSquares;
+let emptySpace = [];
 let movementInterval;
 
-// functionality and events 
+// functionality and events
+const createBoard = () => {
+    boardInfo.forEach((row, rowIndex) => {
+        row.forEach((column, columnIndex) => {
+            const squareValue = `${rowIndex}${columnIndex}`;
+            const squareElement = document.createElement('div');
+            squareElement.setAttribute('class', 'square emptySquare');
+            squareElement.setAttribute('id', squareValue);
+            board.appendChild(squareElement);
+            emptySpace.push(squareValue);
+        });
+    });
+};
+
 const setGame = () => {
     snake = ['00', '01', '02','03'];
     score = snake.length;
     direction = 'right'
     boardInfo = Array.from(Array(boardSize), () => new Array(boardSize).fill(squareType.empty));
-    //  boardSquares = Array.from(Array(boardSize), () => new Array(boardSize).fill(squareTypes.emptySquare));
     console.log(boardInfo) 
+    board.innerHTML = '';
+    emptySpace = [];
+    createBoard()
 }
 const startGame = () => {
     setGame();

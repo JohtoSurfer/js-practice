@@ -17,6 +17,7 @@
  #board {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    background-color: var(--green);
  }
 
  #game-over {
@@ -32,7 +33,7 @@
  #start {
     background-color:var(--orange-2);
     border: none;
-    color: aliceblue;
+    color: rgb(49, 18, 248);
  }
 
  #score-board {
