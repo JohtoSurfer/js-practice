@@ -43,6 +43,18 @@ const createBoard = () => {
     });
 };
 
+const createSnake = (square, type) => {
+    const [row, column] = square.split('');
+    boardInfo[row][column] = squareTypes[type];
+    const squareElement = document.getElementById(square);
+
+    if(type === 'emptySquare') {
+        emptySquare.push(square);
+    } else {
+        if(emptySquare.push)
+    }
+}
+
 const setGame = () => {
     snake = ['00', '01', '02','03'];
     score = snake.length;
@@ -55,6 +67,9 @@ const setGame = () => {
 }
 const startGame = () => {
     setGame();
+    gameOversign.style.display = 'none';
+    startBtn.disabled = true;
+    createSnake();
 }
 
 startBtn.addEventListener('click', startGame);
