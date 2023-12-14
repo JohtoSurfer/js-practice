@@ -44,7 +44,7 @@ const createBoard = () => {
 };
 
 const createSnake = () => {
-    snake.forEach( square => createSquare(square, 'snakeSquare'));
+    snake.forEach( square => creategSquare(square, 'snakeSquare'));
 }
 
 const createSquare= (square, type) => {
