@@ -43,18 +43,22 @@ const createBoard = () => {
     });
 };
 
-const createSnake = (square, type) => {
+const createSnake = () => {
+    snake.forEach( square => createSquare(square, 'snakeSquare'));
+}
+
+const createSquare= (square, type) => {
   
     const [ row, column ] = square.split('');
     boardSquares[row][column] = squareTypes[type];
     const squareElement = document.getElementById(square);
     squareElement.setAttribute('class', `square ${type}`);
 
-    if(type === 'emptySquare') {
-        emptySquares.push(square);
+    if(type === 'emptySpace') {
+        emptySpace.push(square);
     } else {
-        if(emptySquares.indexOf(square) !== -1) {
-            emptySquares.splice(emptySquares.indexOf(square), 1);
+        if(emptySpace.indexOf(square) !== -1) {
+            emptySpace.splice(emptySpace.indexOf(square), 1);
         }
     }
 }
