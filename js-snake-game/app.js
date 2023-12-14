@@ -44,14 +44,18 @@ const createBoard = () => {
 };
 
 const createSnake = (square, type) => {
-    const [row, column] = square.split('');
-    boardInfo[row][column] = squareTypes[type];
+  
+    const [ row, column ] = square.split('');
+    boardSquares[row][column] = squareTypes[type];
     const squareElement = document.getElementById(square);
+    squareElement.setAttribute('class', `square ${type}`);
 
     if(type === 'emptySquare') {
-        emptySquare.push(square);
+        emptySquares.push(square);
     } else {
-        if(emptySquare.push)
+        if(emptySquares.indexOf(square) !== -1) {
+            emptySquares.splice(emptySquares.indexOf(square), 1);
+        }
     }
 }
 
