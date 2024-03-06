@@ -1,0 +1,39 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Dhurjati';
+}
+
+/* Container */
+
+body {
+    background-image: url('img/DreamShaper_v7_surfing_cyber_wave_futuristic_web_development_b_2.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+}
+
+.container {
+    margin: auto; /* Center the container horizontally */
+    margin-top: 15vh;
+    padding: 10px 10px 10px 10px;
+    border: 3px solid #7091F5;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center content vertically */
+    background-size: cover; /* Cover the entire container with the background image */
+    background-color: #9400FF; 
+    background-position: center; /* Center the background image */
+}
+
+#title {
+    color: #FFFD8C;
+}
+
+/* Button */
+#btn {
+    margin-top: 10px; /* Add some space between the input and the button */
+    color: #9400FF;
+    background-color: #FFFD8C;
+    border: 1px solid #7091F5;
+}
