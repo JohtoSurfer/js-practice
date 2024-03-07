@@ -1,8 +1,0 @@
-let xp = 0;
-let health = 100;
-let silver = 50;
-let currentWeapon = 0;
-let fighting;
-let demonHealth;
-let inventory = ["holy water"];
-
