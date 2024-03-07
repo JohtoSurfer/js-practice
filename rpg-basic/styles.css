@@ -22,27 +22,29 @@ body {
     background-color: var(--main-color);
     color: var(--text);
     padding: 10px;
+    border: 2px solid var(--btn-main);
   }
   
   #game {
     max-width: 500px;
     max-height: 400px;
-    background-color: #ffffff;
-    color: #ffffff;
+    background: center url(https://s1.1zoom.me/b5050/52/424372-Kycb_1920x1080.jpg);
+    color: var(--main-color);
     margin: 30px auto 0px;
     padding: 10px;
   }
   
   #controls,
   #stats {
-    border: 1px solid #0a0a23;
+    border: 1px solid var(--main-color);
     padding: 5px;
     color: #0a0a23;
+    border: 2px solid var(--btn-main);
   }
   
   #monsterStats {
     display: none;
-    border: 1px solid #0a0a23;
+    border: 1px solid var(--purple-one);
     padding: 5px;
     color: #ffffff;
     background-color: #c70d0d;
@@ -50,13 +52,16 @@ body {
   
   .stat {
     padding-right: 10px;
+    color: var(--purple-three);
+    font-size: 25px;
   }
   
   button {
     cursor: pointer;
     color: #0a0a23;
     background-color: var(--btn-option);
-    background-image: linear-gradient(var(--btn-option),var(--purple-three));
+    background-image: linear-gradient(var(--btn-option),var(--btn-main));
     border: 3px solid var(--btn-main);
-    color: var(--text);
+    color: var(--purple-three);
+    border-radius: 40%;
   }
