@@ -30,8 +30,8 @@ const locations = [
     text: "You are in the town square. You see a sign that says \"Store\"."
   },
   {
-    name: "store",
-    "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 silver)", "Go to cursed town square"],
+    name: "shop",
+    "button text": ["Buy 10 health (10 silver)", "Buy weapon (30 silver)", "Go to cursed town square"],
     "button functions": [buyHealth, buyWeapon, goShop],
     text: "You enter the store."
   },
@@ -71,10 +71,7 @@ function update(location) {
   function goHauntedForest() {
     update(locations[2]);
   }
-  
-  function fightDemon() {
-    console.log("Fighting demon.");
-  }
+
   
   function buyHealth() {
     if (silver >= 10) {
@@ -88,18 +85,45 @@ function update(location) {
   }
 
   function buyWeapon() {
-    if (currentWeapon < 3) {
-      if (gold >= 30) {
-        gold -= 30;
+    if (currentWeapon < weapons.length - 1) {
+      if (silver >= 30) {
+        silver -= 30;
         currentWeapon++;
-        goldText.innerText = gold;
+        goldText.innerText = silver;
         let newWeapon = weapons[currentWeapon].name;
         text.innerText = "You now have a " + newWeapon + ".";
         inventory.push(newWeapon);
         text.innerText += " In your inventory you have: " + inventory;
       } else {
-        text.innerText = "You do not have enough gold to buy a weapon.";
+        text.innerText = "You do not have enough silver to buy a weapon.";
       }
+    } else {
+      text.innerText = "You already have the most powerful weapon!";
+      button2.innerText = "Sell weapon for 15 silver";
+      button2.onclick = sellWeapon;
     }
   }
 
+  function sellWeapon() {
+    if (inventory.length > 1) {
+      gold += 15;
+      goldText.innerText = gold;
+      let currentWeapon = inventory.shift();
+      text.innerText = "You sold a " + currentWeapon + ".";
+      text.innerText += " In your inventory you have: " + inventory;
+    } else {
+      text.innerText = "Don't sell your only weapon!";
+    }
+  }
+  function fightGhost() {
+
+  }
+  
+  function fightUndead() {
+  
+  }
+
+    
+  function fightDemon() {
+    console.log("Fighting demon.");
+  }
