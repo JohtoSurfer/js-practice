@@ -22,22 +22,39 @@ const weapons = [
   { name: 'magic staff', power: 50 },
   { name: 'enchanted sword', power: 100 }
 ];
+const monsters = [
+  {
+    name: "ghost",
+    level: 2,
+    health: 15
+  },
+  {
+    name: "undead warrior",
+    level: 8,
+    health: 60
+  },
+  {
+    name: "demon",
+    level: 20,
+    health: 300
+  }
+]
 const locations = [
   {
     name: "cursed Town",
     "button text": ["Go to store", "Go to haunted forest", "Fight Demon"],
     "button functions": [goShop, goHauntedForest, fightDemon],
-    text: "You are in the town square. You see a sign that says \"Store\"."
+    text: "You are in the cursed town square. You see a sign that says \"Magic Shop\"."
   },
   {
     name: "shop",
-    "button text": ["Buy 10 health (10 silver)", "Buy weapon (30 silver)", "Go to cursed town square"],
+    "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 silver)", "Go to cursed town square"],
     "button functions": [buyHealth, buyWeapon, goShop],
-    text: "You enter the store."
+    text: "You enter the magic items shop."
   },
   {
     name: "haunted forest",
-    "button text": ["Fight maid ghost", "Fight undead warrior", "Go to town square"],
+    "button text": ["Fight maid ghost", "Fight undead warrior", "Go to cursed town square"],
     "button functions": [fightGhost, fightUndead, goShop],
     text: "You enter the haunted forest. You see some evil spectres."
   }
@@ -78,7 +95,7 @@ function update(location) {
       silver -= 10;
       silver += 10;
       silverText.innerText = silver;
-      silverText.innerText = health;
+      healthText.innerText = health;
     } else {
       text.innerText = "You do not have enough silver to buy health.";
     }
@@ -89,7 +106,7 @@ function update(location) {
       if (silver >= 30) {
         silver -= 30;
         currentWeapon++;
-        goldText.innerText = silver;
+        silverText.innerText = silver;
         let newWeapon = weapons[currentWeapon].name;
         text.innerText = "You now have a " + newWeapon + ".";
         inventory.push(newWeapon);
