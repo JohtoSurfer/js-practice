@@ -1,3 +1,4 @@
+// GLOBAL
 let xp = 0;
 let health = 100;
 let silver = 50;
@@ -5,8 +6,8 @@ let currentWeapon = 0;
 let fighting;
 let demonHealth;
 let inventory = ["holy water"];
-
-const button1 = document.querySelector('#button1');
+// QUERY
+const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const text = document.querySelector("#text");
@@ -15,14 +16,15 @@ const healthText = document.querySelector("#healthText");
 const silverText = document.querySelector("#silverText");
 const monsterStats = document.querySelector("#demonStats");
 const demonName = document.querySelector("#demonName");
-const demonrHealthText = document.querySelector("#demonHealth");
+const demonHealthText = document.querySelector("#demonHealth");
+// ARRAYS
 const weapons = [
   { name: 'holy water', power: 5 },
   { name: 'silver dagger', power: 30 },
   { name: 'magic staff', power: 50 },
   { name: 'enchanted sword', power: 100 }
 ];
-const monsters = [
+const demon = [
   {
     name: "ghost",
     level: 2,
@@ -99,7 +101,7 @@ function update(location) {
   function buyHealth() {
     if (silver >= 10) {
       silver -= 10;
-      silver += 10;
+      health += 10;
       silverText.innerText = silver;
       healthText.innerText = health;
     } else {
@@ -129,8 +131,8 @@ function update(location) {
 
   function sellWeapon() {
     if (inventory.length > 1) {
-      gold += 15;
-      goldText.innerText = gold;
+      silver += 15;
+      silverText.innerText = silver;
       let currentWeapon = inventory.shift();
       text.innerText = "You sold a " + currentWeapon + ".";
       text.innerText += " In your inventory you have: " + inventory;
@@ -152,4 +154,12 @@ function update(location) {
   function fightDemon() {
     fighting = 2;
     goFight();
+  }
+
+  function goFight() {
+    update(locations[3]);
+    demonHealth = demon[fighting].health;
+    demonStats.style.display = "block";
+    demonName.innerText = demon[fighting].name;
+    demonHealthText.innerText = demonHealth;
   }
