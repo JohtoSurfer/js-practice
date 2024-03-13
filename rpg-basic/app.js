@@ -48,7 +48,7 @@ const locations = [
   },
   {
     name: "shop",
-    "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 silver)", "Go to cursed town square"],
+    "button text": ["Buy 10 health (10 silver)", "Buy weapon (30 silver)", "Go to cursed town square"],
     "button functions": [buyHealth, buyWeapon, goShop],
     text: "You enter the magic items shop."
   },
@@ -57,6 +57,12 @@ const locations = [
     "button text": ["Fight maid ghost", "Fight undead warrior", "Go to cursed town square"],
     "button functions": [fightGhost, fightUndead, goShop],
     text: "You enter the haunted forest. You see some evil spectres."
+  },
+  {
+    name: "fight",
+    "button text": ["Attack", "Dodge", "Run"],
+    "button functions": [attack, dodge, goShop],
+    text: "You are slaying a demon."
   }
 ];
 
@@ -133,14 +139,17 @@ function update(location) {
     }
   }
   function fightGhost() {
-
+    fighting = 0;
+    goFight();
   }
   
   function fightUndead() {
-  
+    fighting = 1;
+    goFight();
   }
 
     
   function fightDemon() {
-    console.log("Fighting demon.");
+    fighting = 2;
+    goFight();
   }
