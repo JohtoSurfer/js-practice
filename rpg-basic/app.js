@@ -51,7 +51,7 @@ const locations = [
   {
     name: "shop",
     "button text": ["Buy 10 health (10 silver)", "Buy weapon (30 silver)", "Go to cursed town square"],
-    "button functions": [buyHealth, buyWeapon, goShop],
+    "button functions": [buyHealth, buyWeapon, goCursedTown],
     text: "You enter the magic items shop."
   },
   {
@@ -61,28 +61,34 @@ const locations = [
     text: "You enter the haunted forest. You see some evil spectres."
   },
   {
-    name: "fight",
-    "button text": ["Attack", "Dodge", "Run"],
-    "button functions": [attack, dodge, goShop],
-    text: "You are slaying a demon."
+    name: "kill demon",
+    "button text": ["Go to cursed town square", "Go to cursed town square", "Go to cursed town square"],
+    "button functions": [goCursedTown, goCursedTown, goCursedTown],
+    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
+  },
+  {
+    name: "lose",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart],
+    text: "You die. &#x2620;"
   }
 ];
 
 // init btn 
-button1.onclick = goShop;
-button2.onclick = goHauntedForest;
-button3.onclick = fightDemon;
+button1.onclick = goCursedTown;
+button2.onclick = goShop;
+button3.onclick = goHauntedForest;
 
 // functionality 
 
-function update(location) {
-    button1.innerText = location["button text"][0];
-    button2.innerText = location["button text"][1];
-    button3.innerText = location["button text"][2];
-    button1.onclick = location["button functions"][0];
-    button2.onclick = location["button functions"][1];
-    button3.onclick = location["button functions"][2];
-    text.innerText = location.text;
+function update(locations) {
+    button1.innerText = locations["button text"][0];
+    button2.innerText = locations["button text"][1];
+    button3.innerText = locations["button text"][2];
+    button1.onclick = locations["button functions"][0];
+    button2.onclick = locations["button functions"][1];
+    button3.onclick = locations["button functions"][2];
+    text.innerText = locations.text;
   }
   
   function goCursedTown() {
@@ -162,4 +168,46 @@ function update(location) {
     demonStats.style.display = "block";
     demonName.innerText = demon[fighting].name;
     demonHealthText.innerText = demonHealth;
+  }
+
+  function attack() {
+    text.innerText = "The " + demon[fighting].name + " attacks.";
+    text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
+    health -= demon[fighting].level;
+    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
+    healthText.innerText = health;
+    demonHealthText.innerText = demonHealth;
+    if (health <= 0) {
+      lose();
+    } else if (demonHealth<= 0) {
+      defeatDemon();
+    }
+  }
+
+  function dodge() {
+    text.innerText = "You dodge the attack from the " + monsters[fighting].name;
+  }
+  
+  function defeatDemon() {
+    silver += Math.floor(demon[fighting].level * 6.7);
+    xp += demon[fighting].level;
+    silverText.innerText = silver;
+    xpText.innerText = xp;
+    update(locations[4]);
+  }
+  
+  function lose() {
+    update(locations[5]);
+  }
+  
+  function restart() {
+    xp = 0;
+    health = 100;
+    silver = 50;
+    currentWeapon = 0;
+    inventory = ["stick"];
+    silverText.innerText = silver;
+    healthText.innerText = health;
+    xpText.innerText = xp;
+    goTown();
   }
