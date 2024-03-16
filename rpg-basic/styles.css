@@ -16,6 +16,8 @@
 
 body {
     background-color: var(--main-color);
+    padding: auto;
+    margin: auto;
   }
   
   #text {
@@ -23,12 +25,13 @@ body {
     color: var(--text);
     padding: 10px;
     border: 2px solid var(--btn-main);
+    font-family: 'MedievalSharp';
   }
   
   #game {
     max-width: 500px;
     max-height: 400px;
-    background: center url(https://s1.1zoom.me/b5050/52/424372-Kycb_1920x1080.jpg);
+    background: center url(/img/bg-haunted-town.webp);
     color: var(--main-color);
     margin: 30px auto 0px;
     padding: 10px;

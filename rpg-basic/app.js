@@ -52,19 +52,19 @@ const locations = [
     name: "shop",
     "button text": ["Buy 10 health (10 silver)", "Buy weapon (30 silver)", "Go to cursed town square"],
     "button functions": [buyHealth, buyWeapon, goCursedTown],
-    text: "You enter the magic items shop."
+    text: "Welcome to the magic items shop."
   },
   {
     name: "haunted forest",
     "button text": ["Fight maid ghost", "Fight undead warrior", "Go to cursed town square"],
     "button functions": [fightGhost, fightUndead, goShop],
-    text: "You enter the haunted forest. You see some evil spectres."
+    text: "You enter the haunted forest. You can see the shadows of evil spectres and demons lurking behin the fog."
   },
   {
     name: "kill demon",
     "button text": ["Go to cursed town square", "Go to cursed town square", "Go to cursed town square"],
     "button functions": [goCursedTown, goCursedTown, goCursedTown],
-    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
+    text: 'The demon screams "Arg!" as it dies. You gain some xp points and find pieces of silver.'
   },
   {
     name: "lose",
@@ -88,7 +88,7 @@ function update(locations) {
     button1.onclick = locations["button functions"][0];
     button2.onclick = locations["button functions"][1];
     button3.onclick = locations["button functions"][2];
-    text.innerText = locations.text;
+    text.innerHTML = locations.text;
   }
   
   function goCursedTown() {
@@ -180,7 +180,11 @@ function update(locations) {
     if (health <= 0) {
       lose();
     } else if (demonHealth<= 0) {
-      defeatDemon();
+      if (fighting === 2) {
+        winGame();
+      } else {
+        defeatMonster();
+      }
     }
   }
 
@@ -205,9 +209,9 @@ function update(locations) {
     health = 100;
     silver = 50;
     currentWeapon = 0;
-    inventory = ["stick"];
+    inventory = ["holy water"];
     silverText.innerText = silver;
     healthText.innerText = health;
     xpText.innerText = xp;
-    goTown();
+    goCursedTown();
   }
