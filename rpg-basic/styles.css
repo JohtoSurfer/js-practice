@@ -10,12 +10,12 @@
     --btn-main: #38E54D;
     --btn-option: #03C988;
     --text:#D8D8D8;
-
+    --stats:#EABE6C;
 }
 
 
 body {
-    background-color: var(--main-color);
+    background-color: var(--purple-one);
     padding: auto;
     margin: auto;
   }
@@ -39,29 +39,32 @@ body {
   
   #controls,
   #stats {
+    font-family: 'MedievalSharp';
     border: 1px solid var(--main-color);
     padding: 5px;
-    color: #0a0a23;
+    color: var(--text);
     border: 2px solid var(--btn-main);
   }
   
-  #monsterStats {
+  #demonStats {
     display: none;
-    border: 1px solid var(--purple-one);
+    font-family: 'MedievalSharp';
+    border: 1px solid var(--btn-main);
     padding: 5px;
-    color: #ffffff;
+    color: var(--stats);
     background-color: #c70d0d;
   }
   
   .stat {
     padding-right: 10px;
-    color: var(--purple-three);
+    color: var(--stats);
     font-size: 25px;
   }
   
   button {
     cursor: pointer;
-    color: #0a0a23;
+    color: var(--purple-one);
+    font-family: 'MedievalSharp';
     background-color: var(--btn-option);
     background-image: linear-gradient(var(--btn-option),var(--btn-main));
     border: 3px solid var(--btn-main);
