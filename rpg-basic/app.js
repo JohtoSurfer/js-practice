@@ -14,7 +14,7 @@ const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
 const silverText = document.querySelector("#silverText");
-const monsterStats = document.querySelector("#demonStats");
+const demonStats = document.querySelector("#demonStats");
 const demonName = document.querySelector("#demonName");
 const demonHealthText = document.querySelector("#demonHealth");
 // ARRAYS
@@ -71,6 +71,12 @@ const locations = [
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
     text: "You die. &#x2620;"
+  },
+  { 
+    name: "win", 
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"], 
+    "button functions": [restart, restart, restart], 
+    text: "You defeat the demon! YOU COMPLETE THE GAME! &#x1F389;" 
   }
 ];
 
@@ -173,7 +179,7 @@ function update(locations) {
   function attack() {
     text.innerText = "The " + demon[fighting].name + " attacks.";
     text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
-    health -= demon[fighting].level;
+    health -= getDemonAttackValue(demon[fighting].level);
     monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
     healthText.innerText = health;
     demonHealthText.innerText = demonHealth;
@@ -183,9 +189,15 @@ function update(locations) {
       if (fighting === 2) {
         winGame();
       } else {
-        defeatMonster();
+        defeatDemon();
       }
     }
+  }
+
+  function getDemonAttackValue(level) {
+    const hit = (level * 5) - (Math.floor(Math.random() * xp));
+    console.log(hit);
+    return hit;
   }
 
   function dodge() {
@@ -202,6 +214,10 @@ function update(locations) {
   
   function lose() {
     update(locations[5]);
+  }
+
+  function winGame() {
+    update(locations[6]);
   }
   
   function restart() {
