@@ -221,6 +221,10 @@ function update(locations) {
     return hit;
   }
 
+  function isDemonHit() {
+    return Math.random() > .2 || health < 20;
+  }
+
   function dodge() {
     text.innerText = "You dodge the attack from the " + monsters[fighting].name;
   }
@@ -251,4 +255,16 @@ function update(locations) {
     healthText.innerText = health;
     xpText.innerText = xp;
     goCursedTown();
+  }
+
+  function easterEgg() {
+    update(locations[7]);
+  }
+  
+  function pickTwo() {
+    pick(2);
+  }
+  
+  function pickEight() {
+    pick(8);
   }
