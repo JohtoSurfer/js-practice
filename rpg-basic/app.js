@@ -77,6 +77,13 @@ const locations = [
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"], 
     "button functions": [restart, restart, restart], 
     text: "You defeat the demon! YOU COMPLETE THE GAME! &#x1F389;" 
+  },
+  ,
+  {
+    name: "easter egg",
+    "button text": ["2", "8", "Go to town square?"],
+    "button functions": [pickTwo, pickEight, goTown],
+    text: "You find a anciente gamble game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
   }
 ];
 
@@ -177,21 +184,35 @@ function update(locations) {
   }
 
   function attack() {
-    text.innerText = "The " + demon[fighting].name + " attacks.";
+    text.innerText = "The " + demon[fighting].name + "is attacking you.";
     text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
     health -= getDemonAttackValue(demon[fighting].level);
-    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
+    if (isDemonHit()) {
+      demonHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;    
+    } else {
+      text.innerText += " You miss.";
+    }
     healthText.innerText = health;
     demonHealthText.innerText = demonHealth;
     if (health <= 0) {
       lose();
-    } else if (demonHealth<= 0) {
+    } else if (demonHealth <= 0) {
       if (fighting === 2) {
         winGame();
       } else {
         defeatDemon();
       }
     }
+    if (Math.random() <= .1 && inventory.length !== 1) {
+      text.innerText += " Your " + inventory.pop() + " breaks.";
+      currentWeapon--;
+    }
+  }
+  
+  function getDemonAttackValue(level) {
+    const hit = (level * 5) - (Math.floor(Math.random() * xp));
+    console.log(hit);
+    return hit > 0 ? hit : 0;
   }
 
   function getDemonAttackValue(level) {
