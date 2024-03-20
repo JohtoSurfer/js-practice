@@ -82,7 +82,7 @@ const locations = [
   {
     name: "easter egg",
     "button text": ["2", "8", "Go to town square?"],
-    "button functions": [pickTwo, pickEight, goTown],
+    "button functions": [pickTwo, pickEight, goCursedTown],
     text: "You find a anciente gamble game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
   }
 ];
