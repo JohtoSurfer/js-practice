@@ -90,11 +90,12 @@ const locations = [
 // init btn 
 button1.onclick = goCursedTown;
 button2.onclick = goShop;
-button3.onclick = goHauntedForest;
+button3.onclick = fightDemon;
 
 // functionality 
 
 function update(locations) {
+    demonStats.style.display = "none";
     button1.innerText = locations["button text"][0];
     button2.innerText = locations["button text"][1];
     button3.innerText = locations["button text"][2];
@@ -176,7 +177,7 @@ function update(locations) {
   }
 
   function goFight() {
-    update(locations[3]);
+    update(locations[3]);   
     demonHealth = demon[fighting].health;
     demonStats.style.display = "block";
     demonName.innerText = demon[fighting].name;
@@ -215,18 +216,12 @@ function update(locations) {
     return hit > 0 ? hit : 0;
   }
 
-  function getDemonAttackValue(level) {
-    const hit = (level * 5) - (Math.floor(Math.random() * xp));
-    console.log(hit);
-    return hit;
-  }
-
   function isDemonHit() {
     return Math.random() > .2 || health < 20;
   }
 
   function dodge() {
-    text.innerText = "You dodge the attack from the " + monsters[fighting].name;
+    text.innerText = "You dodge the attack from the " + demon[fighting].name;
   }
   
   function defeatDemon() {
