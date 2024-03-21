@@ -7,10 +7,11 @@
     --light-purple: #F3D7CA;
     --red: #FF8080;
     --light-blue: #CAEDFF;
+
   }
   
   body {
-    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-family: "Tilt Warp", sans-serif;
     font-size: 18px;
     background-color: var(--fcc-green);
     color: var(--light-grey);
