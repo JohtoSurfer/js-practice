@@ -5,7 +5,7 @@ const pauseButton = document.getElementById("pause");
 const nextButton = document.getElementById("next");
 const previousButton = document.getElementById("previous");
 const shuffleButton = document.getElementById("shuffle");
-
+// objects 
 const allSongs = [
     {
       id: 0,
@@ -78,6 +78,25 @@ const allSongs = [
       src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/chasing-that-feeling.mp3",
     },
   ];
-
+// functionality 
   const audio = new Audio();
-  let userData = {};
+  let userData = {
+    songs: [...allSongs],
+    currentSong: null,
+    songCurrentTime: 0,
+  };
+
+  const renderSongs = (array) => {
+    const songsHTML = array
+      .map((song)=> {
+        return `
+        <li id="song-${song.id}" class="playlist-song">
+        <button class="playlist-song-info">
+            <span class="playlist-song-title">${song.title}</span>
+            <span class="playlist-song-artist">${song.artist}</span>
+            <span class="playlist-song-duration">${song.duration}</span>
+        </button>
+  </li>
+  `;
+})
+};
