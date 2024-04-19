@@ -116,6 +116,10 @@ const allSongs = [
   }
 });
 
+const playNextSong = () => {
+
+}
+
   const sortSongs = () => {
     userData?.songs.sort((a,b) => {
       if (a.title < b.title) {
