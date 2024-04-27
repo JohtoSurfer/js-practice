@@ -192,3 +192,12 @@ const sortSongs = () => {
   
   renderSongs(sortSongs());
 
+/* 
+function ageAcces(age) {
+  const shouldAccess = age >= 18 ? true : false;
+  return shouldAccess
+}
+console.log(ageAcces(18))
+
+function with tenary operator purpuse practice and understanding 
+*/ 
