@@ -1,0 +1,84 @@
+/* Universal styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Body styles */
+body {
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Container styles */
+#container {
+    text-align: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Heading styles */
+h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+/* List styles */
+#topping-list {
+    list-style: none;
+    padding: 0;
+}
+
+.topping {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.bd-brown {
+    background-color: #8B4513; /* Brown */
+}
+
+.bd-orange {
+    background-color: #FFA500; /* Orange */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    #container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .topping {
+        font-size: 1em;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2em;
+    }
+
+    .topping {
+        font-size: 0.9em;
+        padding: 6px;
+    }
+}
